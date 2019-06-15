@@ -8,9 +8,19 @@
 ## Naver News Crawler
 네이버 뉴스에서도 '속보' 카테고리 정보를 가져오는 크롤러입니다.
 ### 필요 사항
-
+최신 버전의 Anaconda를 사용하고 계시다면 추가적인 라이브러리 설치 없이 작동합니다.
+하지만 PC에 구 버전의 Anaconda가 설치되어 있다면 프롬프트 창에 `pip install requests`, `pip install beautifulsoup4`를 입력하여 `requests`와 `beautifulsoup4`를 설치하셔야 라이브러리를 사용할 수 있습니다.
 ### 사용 방법
-
+라이브러리를 불러오는 코드는 아래와 같습니다.
+```python
+from scratchback import NaverNews
+crawler = NaverNews()
+```
+`crawl()` 메소드를 사용하여 네이버 뉴스 속보 정보를 가져올 수 있습니다.
+```python
+news_list = crawler.crawl()
+```
+위와 같이 crawl() 메소드에 아무 것도 지정하지 않을 경우 코드 실행한 당일 네이버 뉴스 속보 카테고리의 첫 페이지 뉴스 정보를 가져옵니다.
 ## Instagram Crawler
 인스타그램 계정 아이디를 입력하면 계정의 업로드된 게시물 정보를 가져오는 크롤러입니다.
 ### 필요 사항
