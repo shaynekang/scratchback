@@ -10,9 +10,11 @@
 
 ### 필요 사항
 
-인스타그램 크롤러를 사용하기 위해서는 selenium이라는 라이브러리가 필요합니다. `pip install selenium`으로 selenium을 다운로드할 수 있습니다.
+인스타그램 크롤러를 사용하기 위해서는 selenium이라는 라이브러리가 필요합니다. 프롬프트 창에 `pip install selenium` 명령어를 입력함으로 selenium을 설치할 수 있고, jupyter notebook에서는 `!pip install selenium`을 입력하고 실행시키면 설치가 완료됩니다.
 
-또, Chrome 브라우저로 인스타그램에 접근하기 때문에, [다음의 링크](http://chromedriver.chromium.org/downloads) 에서 크롬 버전에 맞는 드라이버를 다운로드 받아야 합니다. 작업하고 있는 PC의 크롬 버전은 주소창에 <chrome://version/>를 입력할 경우 알 수 있습니다.
+또, Chrome 브라우저로 인스타그램에 접근하기 때문에, [다음의 링크](http://chromedriver.chromium.org/downloads) 에서 크롬 버전에 맞는 드라이버를 다운로드 받아야 합니다. 
+
+작업하고 있는 PC의 크롬 버전은 주소창에 <chrome://version/>를 입력할 경우 알 수 있습니다. 맨 첫 줄에 Chrome : 75.0.3770.90이라고 나와있을 경우 75 버전의 크롬을 사용하고 있는 것입니다.
 
 ### 사용 방법
 
@@ -48,5 +50,5 @@ post_list = crawler.crawl("chromedriver", "dsschoolkr", posts=2)
 아래의 코드를 통해 결과값을 데이터프레임 형식으로 변환하는 것도 가능합니다.
 ```python
 import pandas as pd
-pd.DataFrame(post_list)
+data = pd.DataFrame(post_list)
 ```
