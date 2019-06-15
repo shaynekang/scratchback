@@ -1,4 +1,4 @@
-# sratchback
+# scratchback
 
 ## Naver News Crawler
 
@@ -11,3 +11,10 @@
 
 
 ## Instagram Crawler
+
+### 필요 사항
+
+
+### 설치
+
+### 사용 방법
