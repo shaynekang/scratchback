@@ -9,6 +9,7 @@
 네이버 뉴스에서도 '속보' 카테고리 정보를 가져오는 크롤러입니다.
 ### 필요 사항
 최신 버전의 Anaconda를 사용하고 계시다면 추가적인 라이브러리 설치 없이 작동합니다.
+
 하지만 PC에 구 버전의 Anaconda가 설치되어 있다면 프롬프트 창에 `pip install requests`, `pip install beautifulsoup4`를 입력하여 `requests`와 `beautifulsoup4`를 설치하셔야 라이브러리를 사용할 수 있습니다.
 ### 사용 방법
 라이브러리를 불러오는 코드는 아래와 같습니다.
