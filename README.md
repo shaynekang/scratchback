@@ -17,7 +17,7 @@
 ### 사용 방법
 
 아래와 같이 라이브러리를 불러올 수 있습니다. 
-```{.python}
+```python
 from scratchback import Instagram
 crawler = Instagram()
 ```
