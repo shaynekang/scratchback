@@ -1,4 +1,4 @@
-﻿from selenium import webdriver
+from selenium import webdriver
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.action_chains import ActionChains
 import time
@@ -200,10 +200,13 @@ class Instagram():
             else:
                 content = ""
 
+            url = self.driver.current_url
+            post_id = url.split("/")[-2]
+            
             self.driver.execute_script("window.history.go(-1)")
 
             completed.append(button)
-            result.append({"content" : content, "img_src" : img_list, "like" : like_num, "comments" : comments})
+            result.append({"post_id" : post_id ,"content" : content, "img_src" : img_list, "like" : like_num, "comments" : comments})
             
             tmp = len(result)
             
