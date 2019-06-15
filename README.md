@@ -5,7 +5,7 @@
 ## 설치
 프롬프트 창에 `pip install scratchback`을 입력하여 설치할 수 있습니다.
 
-## Naver News Crawler
+## NaverNews Crawler
 네이버 뉴스에서도 '속보' 카테고리 정보를 가져오는 크롤러입니다.
 ### 필요 사항
 최신 버전의 Anaconda를 사용하고 계시다면 추가적인 라이브러리 설치 없이 작동합니다.
