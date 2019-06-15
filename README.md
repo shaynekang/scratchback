@@ -6,7 +6,8 @@
 프롬프트(prompt) 창에 `pip install scratchback`을 입력하여 설치할 수 있습니다.
 
 ## NaverNews Crawler
-네이버 뉴스에서도 '속보' 카테고리의 뉴스 정보들을 가져오는 크롤러입니다. 
+네이버 뉴스에서도 '속보' 카테고리의 뉴스 정보들을 가져오는 크롤러입니다. 가져오는 정보들로는 `기사 제목, 기사 본문, 기사 날짜, 신문사, 기사 id, 기사 url`가 있습니다.
+
 ### 필요 사항
 최신 버전의 Anaconda를 사용하고 계시다면 추가적인 라이브러리 설치 없이 작동합니다.
 
@@ -22,21 +23,21 @@ crawler = NaverNews()
 ```python
 crawler = NaverNews(page_num=3, page_start=4)
 ```
-`page_num`과 `page_start`를 지정함으로써 어느 페이지부터 얼마나 가져올지를 정할 수 있습니다. 만약 `page_num`값을 지정하지 않는다면 하나의 페이지만 가져오며, `page_start`를 정하지 않으면 1페이지부터 가져오도록 설정하였습니다.
+`page_num`과 `page_start`를 지정함으로써 날짜별로 어느 페이지부터 얼마나 가져올지를 정할 수 있습니다. 만약 `page_num`값을 지정하지 않는다면 날짜별로 하나의 페이지만 가져오며, `page_start`를 정하지 않으면 1페이지부터 가져오도록 설정하였습니다.
 
 ```python
 crawler = NaverNews(page_start=4, page_end=10)
 ```
-`page_num` 대신 `page_end`를 사용하여 어디에서부터 어디까지 정보를 가져올지 설정할 수 있습니다. 만약 `page_num`, `page_start`, `page_end`를 셋 다 설정하였는데 `page_num`이 `page_end - page_start + 1`값과 일치하지 않을 경우 에러가 발생하니 유의하시기 바랍니다. 
+`page_num` 대신 `page_end`를 사용하여 어디에서부터 어디까지 정보를 가져올지 설정할 수 있습니다. 만약 `page_num`, `page_start`, `page_end`를 셋 다 설정하였는데 `page_num`이 `page_end - page_start + 1`값과 일치하지 않을 경우 에러가 발생하니 유의하시기 바랍니다. `page_start`, `page_end`를 지정할 경우 `page_num`을 지정하지 않아도 됩니다.
 
 ```python
 crawler = NaverNews(date_start="2019.06.14")
 ```
-`date_start` 변수로 날짜를 지정하여 정보를 가져올 수 있습니다. 위의 코드의 경우 2019년 6월 14일부터 코드를 실행하는 날까지의 뉴스 속보를 가져오며, 일별로 한 페이지만을 가져오는 기능을 합니다.
+변수로 날짜를 지정하여 정보를 가져올 수 있으며 입력하는 날짜의 양식은 YYYY.MM.DD로, 다른 양식은 작동하지 않습니다. 따로 날짜를 지정하지 않으면 오늘 날짜로 지정됩니다. 날짜를 입력하는 변수는 `date_start`와 `date_end`가 있습니다. 위의 코드의 경우 2019년 6월 14일부터 코드를 실행하는 날까지의 뉴스 속보를 가져오며, 일별로 한 페이지만을 가져오는 기능을 합니다.
 ```python
 crawler = NaverNews(date_start="2019.06.14", date_end="2019.06.16")
 ```
-`date_end` 변수를 통해 가져오고자 하는 날의 마지막도 지정할 수 있습니다. 날짜의 양식은 YYYY.MM.DD로, 다른 양식은 작동하지 않습니다.
+`date_end` 변수를 통해 가져오고자 하는 날의 마지막도 지정할 수 있습니다. `date_end`를 따로 지정하지 않는 다면 오늘 날짜로 지정됩니다. 
 
 만약 2019년 6월 14일부터 6월 16일까지의 뉴스 속보를 1페이지부터 10페이지까지 가져오고 싶다면, 다음과 같은 코드를 통해 크롤링할 수 있습니다.
 ```python
@@ -47,6 +48,14 @@ crawler = NaverNews(page_start=1, page_end=10, date_start="2019.06.14", date_end
 ```python
 news_list = crawler.crawl()
 ```
+
+아래의 코드를 통해 결과값을 데이터프레임 형식으로 변환한 뒤 csv파일로 저장할 수 있습니다.
+```python
+import pandas as pd
+data = pd.DataFrame(news_list)
+data.to_csv("news.csv")
+```
+
 ## Instagram Crawler
 인스타그램 계정 아이디를 입력하면 계정의 업로드된 게시물 정보를 가져오는 크롤러입니다.  
 페이지 로딩에 1분 이상 소요될 경우 프로그램이 멈추도록 설계되어 있습니다. 인터넷 환경이 원활한 곳에서 사용하는 것을 권장드립니다.
@@ -91,8 +100,9 @@ post_list = crawler.crawl("chromedriver", "dsschoolkr", posts=2)
 
 `post_id`는 게시물의 고유 id를 의미합니다. `img_src`에는 이미지 혹은 동영상의 url 정보가 리스트 형태로 담겨있으며, `content`에는 게시물에 작성된 문구가 담겨있습니다. `like`는 게시물 좋아요 개수, `comments`는 게시물에 달린 댓글의 개수를 의미합니다.
 
-아래의 코드를 통해 결과값을 데이터프레임 형식으로 변환하는 것도 가능합니다.
+아래의 코드를 통해 결과값을 데이터프레임 형식으로 변환하고 csv파일로 저장할 수 있습니다.
 ```python
 import pandas as pd
 data = pd.DataFrame(post_list)
+data.to_csv("post.csv")
 ```
