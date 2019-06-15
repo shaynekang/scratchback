@@ -10,7 +10,8 @@
 
 ### 필요 사항
 
-인스타그램 크롤러를 사용하기 위해서는 selenium이라는 라이브러리가 필요합니다. 프롬프트 창에 `pip install selenium` 명령어를 입력함으로 selenium을 설치할 수 있고, jupyter notebook에서는 `!pip install selenium`을 입력하고 실행시키면 설치가 완료됩니다.
+인스타그램 크롤러를 사용하기 위해서는 selenium이라는 라이브러리가 필요합니다. 프롬프트 창에 `pip install selenium` 명령어를 입력함으로 selenium을 설치할 수 있습니다. 
+만약 jupyter notebook에서 설치하기를 원한다면 `!pip install selenium`을 입력하고 실행시키면 설치가 완료됩니다.
 
 또, Chrome 브라우저로 인스타그램에 접근하기 때문에, [다음의 링크](http://chromedriver.chromium.org/downloads) 에서 크롬 버전에 맞는 드라이버를 다운로드 받아야 합니다. 
 
