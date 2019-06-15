@@ -20,7 +20,17 @@ crawler = NaverNews()
 ```python
 news_list = crawler.crawl()
 ```
-위와 같이 crawl() 메소드에 아무 것도 지정하지 않을 경우 코드 실행한 당일 네이버 뉴스 속보 카테고리의 첫 페이지 뉴스 정보를 가져옵니다.
+위와 같이 `crawl()` 메소드에 아무 것도 지정하지 않을 경우 코드 실행한 당일 네이버 뉴스 속보 카테고리의 첫 페이지 뉴스 정보를 가져옵니다.
+```python
+news_list = crawler.crawl(page_num=3, page_start=4)
+```
+`page_num`과 `page_start`를 지정함으로써 어느 페이지부터 얼마나 가져올지를 정할 수 있습니다. 만약 `page_num`값을 지정하지 않는다면 하나의 페이지만 가져오며, `page_start`를 정하지 않으면 1페이지부터 가져오도록 설정하였습니다.
+```python
+news_list = crawler.crawl(page_start=4, page_end=10)
+```
+`page_num` 대신 `page_end`를 사용하여 어디에서부터 어디까지 정보를 가져올지 설정할 수 있습니다. 만약 `page_num`, `page_start`, `page_end`를 셋 다 설정하였는데 `page_num`이 `page_end - page_start + 1`값과 일치하지 않을 경우 에러가 발생하니 유의하시기 바랍니다. 
+
+
 ## Instagram Crawler
 인스타그램 계정 아이디를 입력하면 계정의 업로드된 게시물 정보를 가져오는 크롤러입니다.  
 페이지 로딩에 1분 이상 소요될 경우 프로그램이 멈추도록 설계되어 있습니다. 인터넷 환경이 원활한 곳에서 사용하는 것을 권장드립니다.
