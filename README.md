@@ -22,19 +22,19 @@ from scratchback import Instagram
 crawler = Instagram()
 ```
 crawler 변수 생성 시 `headless` 옵션을 `False`로 지정하면 Chrome 브라우저를 통해 크롤링 진행 상황을 확인할 수 있습니다.
-```{.python}
+```python
 crawler = Instagram(headless=False)
 ```
 `crawl()` 메소드를 사용하면 크롤링을 할 수 있습니다. 이 때, 첫번째 인자에 Chrome 드라이버의 경로를, 두번째 인자로는 크롤링하고자 하는 계정의 아이디를 입력해주어야 합니다.
-```{.python}
+```python
 post_list = crawler.crawl("chromedriver", "dsschoolkr")
 ```
 `posts` 옵션을 지정하면 가져오려고 하는 게시물의 개수를 조정할 수 있습니다. 아래와 같이 `posts`를 2로 지정할 경우, 해당 계정의 제일 최근 게시물 두개의 정보를 반환합니다.
-```{.python}
+```python
 post_list = crawler.crawl("chromedriver", "dsschoolkr", posts=2)
 ```
 결과값인 `post_list`의 형태는 아래와 같습니다.
-```{.python}
+```python
 [{'comments': '0',
   'content': '오늘밤(6/9) 8시 유튜브 스트리밍으로 스타벅스 1호 데이터사이언티스트가 직업/전망/데이터와 관련된 질문에 직접 답변드립니다 :)참여방법은 프로필 설명을 확인해주세요!',
   'img_src': ['https://scontent-icn1-1.cdninstagram.com/vp/0665d8f0404e266aa84d3d77eb919b56/5DC64220/t51.2885-15/e35/61234597_166094021086395_2911502642251464796_n.jpg?_nc_ht=scontent-icn1-1.cdninstagram.com'],
@@ -46,7 +46,7 @@ post_list = crawler.crawl("chromedriver", "dsschoolkr", posts=2)
 `post_id`는 게시물의 고유 id를 의미합니다. `img_src`에는 이미지 혹은 동영상의 url 정보가 리스트 형태로 담겨있으며, `content`에는 게시물에 작성된 문구가 담겨있습니다. `like`는 게시물 좋아요 개수, `comments`는 게시물에 달린 댓글의 개수를 의미합니다.
 
 아래의 코드를 통해 결과값을 데이터프레임 형식으로 변환하는 것도 가능합니다.
-```{.python}
+```python
 import pandas as pd
 pd.DataFrame(post_list)
 ```
