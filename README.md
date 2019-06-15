@@ -1,5 +1,8 @@
 # scratchback
 
+## 설치
+프롬프트 창에 `pip install scratchback`을 입력하여 설치할 수 있습니다.
+
 ## Naver News Crawler
 
 ### 필요 사항
