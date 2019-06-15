@@ -23,7 +23,7 @@ crawler = NaverNews()
 ```python
 crawler = NaverNews(page_num=3, page_start=4)
 ```
-`page_num`과 `page_start`를 지정함으로써 날짜별로 어느 페이지부터 얼마나 가져올지를 정할 수 있습니다. 만약 `page_num`값을 지정하지 않는다면 날짜별로 하나의 페이지만 가져오며, `page_start`를 정하지 않으면 1페이지부터 가져오도록 설정하였습니다.
+`page_num`과 `page_start`를 지정함으로써 날짜별로 어느 페이지부터 얼마나 가져올지를 정할 수 있습니다. 만약 `page_num`값을 지정하지 않는다면 날짜별로 하나의 페이지만 가져오며, `page_start`를 정하지 않으면 1페이지부터 가져오도록 설정하였습니다. 또한 현재 존재하는 페이지 수 이상의 페이지 수를 입력하면 존재하는 페이지 수 만큼의 정보만 가져옵니다. 
 
 ```python
 crawler = NaverNews(page_start=4, page_end=10)
@@ -33,7 +33,7 @@ crawler = NaverNews(page_start=4, page_end=10)
 ```python
 crawler = NaverNews(date_start="2019.06.14")
 ```
-변수로 날짜를 지정하여 정보를 가져올 수 있으며 입력하는 날짜의 양식은 YYYY.MM.DD로, 다른 양식은 작동하지 않습니다. 따로 날짜를 지정하지 않으면 오늘 날짜로 지정됩니다. 날짜를 입력하는 변수는 `date_start`와 `date_end`가 있습니다. 위의 코드의 경우 2019년 6월 14일부터 코드를 실행하는 날까지의 뉴스 속보를 가져오며, 일별로 한 페이지만을 가져오는 기능을 합니다.
+변수로 날짜를 지정하여 정보를 가져올 수 있으며 입력하는 날짜의 양식은 YYYY.MM.DD로, 다른 양식은 작동하지 않습니다. 따로 날짜를 지정하지 않으면 오늘 날짜로 지정되고 미래의 날짜를 입력해도 자동으로 오늘의 날짜로 지정됩니다. 날짜를 입력하는 변수는 `date_start`와 `date_end`가 있습니다. 위의 코드의 경우 2019년 6월 14일부터 코드를 실행하는 날까지의 뉴스 속보를 가져오며, 일별로 한 페이지만을 가져오는 기능을 합니다.
 ```python
 crawler = NaverNews(date_start="2019.06.14", date_end="2019.06.16")
 ```
@@ -48,6 +48,18 @@ crawler = NaverNews(page_start=1, page_end=10, date_start="2019.06.14", date_end
 ```python
 news_list = crawler.crawl()
 ```
+
+결과값인 news_list의 형태는 다음과 같습니다.
+```python
+{'headline': '[날씨] 오늘 초여름 더위 속 곳곳 소나기...제주도 ·남해안 비',
+  'content': '오늘도 초여름 더위가 이어지는 가운데 내륙 곳곳에 소나기가, 제주도와 남해안에는 비가 내릴 것으로 보입니다.기상청은 오늘 제주도와 남해안은 남쪽을 지나가는 기압골 영향으로 5~30mm의 비가 오겠다고 밝혔습니다.내륙은 대체로 맑겠지만, 영서와 경북과 전북 내륙에는 대기 불안정으로 오후 한때 소나기가 내리는 곳이 있겠습니다.오늘 낮 기온은 서울과 대전·대구 27도 등 어제보다 1∼2도 낮지만, 여전히 덥겠습니다.[저작권자(c) YTN & YTN PLUS 무단전재 및 재배포 금지]',
+  'written at': datetime.date(2019, 6, 14),
+  'company': 'YTN',
+  'url': 'https://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=001&oid=052&aid=0001306642',
+  'title': '2번째 뉴스',
+  'id': '052-0001306642'}
+```
+리스트 내에 각각의 뉴스에 대한 정보가 딕셔너리 형태로 들어있는 모습입니다.
 
 아래의 코드를 통해 결과값을 데이터프레임 형식으로 변환한 뒤 csv파일로 저장할 수 있습니다.
 ```python
