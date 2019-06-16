@@ -81,22 +81,22 @@ data.to_csv("news.csv")
 
 ### 사용 방법
 
-아래와 같이 라이브러리를 불러올 수 있습니다. 
+아래와 같이 라이브러리를 불러올 수 있습니다. Instagram 객체 생성 시, 다운로드 받은 chromedriver의 경로를 입력해주어야 합니다.
 ```python
 from scratchback import Instagram
-crawler = Instagram()
+crawler = Instagram("chromedriver")
 ```
 crawler 변수 생성 시 `headless` 옵션을 `False`로 지정하면 Chrome 브라우저를 통해 크롤링 진행 상황을 확인할 수 있습니다.
 ```python
-crawler = Instagram(headless=False)
+crawler = Instagram("chromedriver", headless=False)
 ```
-`crawl()` 메소드를 사용하면 크롤링을 할 수 있습니다. 이 때, 첫번째 인자에 Chrome 드라이버의 경로를, 두번째 인자로는 크롤링하고자 하는 계정의 아이디를 입력해주어야 합니다.
+`crawl()` 메소드를 사용하면 크롤링을 할 수 있습니다. 이 때, 크롤링하고자 하는 계정의 아이디를 입력해주어야 합니다.
 ```python
-post_list = crawler.crawl("chromedriver", "dsschoolkr")
+post_list = crawler.crawl("dsschoolkr")
 ```
 `posts` 옵션을 지정하면 가져오려고 하는 게시물의 개수를 조정할 수 있습니다. 아래와 같이 `posts`를 2로 지정할 경우, 해당 계정의 제일 최근 게시물 두개의 정보를 반환합니다.
 ```python
-post_list = crawler.crawl("chromedriver", "dsschoolkr", posts=2)
+post_list = crawler.crawl("dsschoolkr", posts=2)
 ```
 결과값인 `post_list`의 형태는 아래와 같습니다.
 ```python
