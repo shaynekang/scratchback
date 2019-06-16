@@ -2,16 +2,24 @@
 
 네이버 뉴스와 인스타그램을 크롤링할 수 있는 라이브러리입니다.
 
+## 필요 사항
+최신 버전의 Anaconda를 사용하고 계시는 것을 추천드립니다.
+
+하지만 requests, beautifulsoup4, selenium 라이브러리가 설치되어 있지 않다면 프롬프트(prompt)에서 `pip install requests`, `pip install beautifulsoup4`, `pip install selenium`를 실행하여 `requests`, `beautifulsoup4`, `selenium`를 설치하셔야 라이브러리를 사용할 수 있습니다. http://bit.ly/install-for-crawling 을 참고하여 필요 라이브러리들을 설치해주세요.
+
+만약 jupyter notebook에서 설치하기를 원한다면 `!pip install <라이브러리 이름>`을 입력하고 실행시키면 설치가 완료됩니다.
+
+또, Chrome 브라우저로 인스타그램에 접근하기 때문에, [다음의 링크](http://chromedriver.chromium.org/downloads) 에서 크롬 버전에 맞는 드라이버를 다운로드 받아야 합니다. 
+
+작업하고 있는 PC의 크롬 버전은 주소창에 <chrome://version/>를 입력할 경우 알 수 있습니다.   
+맨 첫 줄에 Chrome : 75.0.3770.90이라고 나와있을 경우 75 버전의 크롬을 사용하고 있는 것입니다.
+
 ## 설치
 프롬프트(prompt) 창에 `pip install scratchback`을 입력하여 설치할 수 있습니다.
 
 ## NaverNews Crawler
 네이버 뉴스에서도 '속보' 카테고리의 뉴스 정보들을 가져오는 크롤러입니다. 가져오는 정보들로는 `기사 제목, 기사 본문, 기사 날짜, 신문사, 기사 id, 기사 url`가 있습니다.
 
-### 필요 사항
-최신 버전의 Anaconda를 사용하고 계시다면 추가적인 라이브러리 설치 없이 작동합니다.
-
-하지만 PC에 구 버전의 Anaconda가 설치되어 있다면 프롬프트 창에 `pip install requests`, `pip install beautifulsoup4`를 입력하여 `requests`와 `beautifulsoup4`를 설치하셔야 라이브러리를 사용할 수 있습니다. http://bit.ly/install-for-crawling 을 참고하여 필요 라이브러리들을 설치해주세요.
 ### 사용 방법
 라이브러리를 불러오는 코드는 아래와 같습니다.
 ```python
@@ -70,15 +78,6 @@ data.to_csv("news.csv")
 ## Instagram Crawler
 인스타그램 계정 아이디를 입력하면 계정의 업로드된 게시물 정보를 가져오는 크롤러입니다.  
 페이지 로딩에 1분 이상 소요될 경우 프로그램이 멈추도록 설계되어 있습니다. 인터넷 환경이 원활한 곳에서 사용하는 것을 권장드립니다.
-### 필요 사항
-
-인스타그램 크롤러를 사용하기 위해서는 selenium이라는 라이브러리가 필요합니다. 프롬프트 창에 `pip install selenium` 명령어를 입력함으로 selenium을 설치할 수 있습니다. 
-만약 jupyter notebook에서 설치하기를 원한다면 `!pip install selenium`을 입력하고 실행시키면 설치가 완료됩니다.
-
-또, Chrome 브라우저로 인스타그램에 접근하기 때문에, [다음의 링크](http://chromedriver.chromium.org/downloads) 에서 크롬 버전에 맞는 드라이버를 다운로드 받아야 합니다. 
-
-작업하고 있는 PC의 크롬 버전은 주소창에 <chrome://version/>를 입력할 경우 알 수 있습니다.   
-맨 첫 줄에 Chrome : 75.0.3770.90이라고 나와있을 경우 75 버전의 크롬을 사용하고 있는 것입니다.
 
 ### 사용 방법
 
